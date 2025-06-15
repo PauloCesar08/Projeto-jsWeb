@@ -25,6 +25,8 @@ function convertValues() {
     }
 
 
+
+
     valueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
         style: "currency",
         currency: "BRL"
@@ -34,6 +36,25 @@ function convertValues() {
 
 }
 
+
+
+function currencyChange() {
+    const currencyName = document.querySelector(".currency-name")
+    const currencyLogo = document.querySelector(".currency-logo")
+
+    if(currencySelect.value == "dolar") {
+        currencyName.innerHTML = "Dólar"
+        currencyLogo.src = "./assets/dolar.png"
+    }
+
+    if(currencySelect.value == "euro") {
+        currencyName.innerHTML = "Euro"
+        currencyLogo.src = "./assets/euro.png"
+    }
+
+}
+
+currencySelect.addEventListener("change", currencyChange)
 convertButton.addEventListener("click", convertValues)  /*depois de criar a variável, eu crio uma lista de eventos pra quando
 meu button for clicado, e crio uma function para ser chamada quando esse button for clicado
 nessa function, quando o botão está sendo clicado, o add event listener mostra o valor que tem dentro do input, 
