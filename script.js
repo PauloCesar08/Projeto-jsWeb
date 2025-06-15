@@ -1,25 +1,37 @@
-const convertButton = document.querySelector(".convert-button"); //começo criando minha variável chamando o button
+const convertButton = document.querySelector(".convert-button"); //variável chamando o button
+const currencySelect = document.querySelector(".select-currency")
 
-function convertValues(){
+function convertValues() {
     const inputValue = document.querySelector(".input-value").value
     const valueToConvert = document.querySelector(".value-to-convert")//valor em real
     const valueConverted = document.querySelector(".converted-value")//outras moedas
-    
-    const dolarToday = 5.54
 
-    const convertValue = inputValue / dolarToday
+    const dolarToday = 5.54
+    const euroToday = 6.41
+
+
+    if (currencySelect.value == "dolar") {
+        valueConverted.innerHTML = new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD"
+        }).format(inputValue / dolarToday)
+    }
+
+    if (currencySelect.value == "euro") {
+        valueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
+            style: "currency",
+            currency: "EUR"
+        }).format(inputValue / euroToday)
+    }
+
 
     valueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
         style: "currency",
         currency: "BRL"
 
     }).format(inputValue)
-    valueConverted.innerHTML = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD"
-    }).format(convertValue)
 
-    console.log(convertValue)
+
 }
 
 convertButton.addEventListener("click", convertValues)  /*depois de criar a variável, eu crio uma lista de eventos pra quando
